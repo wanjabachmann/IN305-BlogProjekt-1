@@ -16,11 +16,23 @@
       </mat-card-content>
       <mat-card-footer class="blog-footer">
         <mat-card-content class="blog-author">
-          <p>{{ blog.author }}</p>
+          <p>Author: {{ blog.author }}</p>
         </mat-card-content>
         <mat-card-actions align="end">
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="Example icon button with a heart icon"
+          >
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="Example icon button with a heart icon"
+          >
+            <mat-icon>share</mat-icon>
+          </button>
         </mat-card-actions>
       </mat-card-footer>
     </mat-card>
