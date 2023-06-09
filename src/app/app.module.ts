@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [
@@ -19,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     MatCardModule,
     MatIconModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
