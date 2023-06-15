@@ -75,7 +75,8 @@
               "browserTarget": "angular-blog-app-Wanja-Bachmann:build:production"
             },
             "development": {
-              "browserTarget": "angular-blog-app-Wanja-Bachmann:build:development"
+              "browserTarget": "angular-blog-app-Wanja-Bachmann:build:development",
+              "proxyConfig": "./proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
