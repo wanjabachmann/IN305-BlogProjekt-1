@@ -4,24 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './core/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { HeaderComponent } from './core/header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatCardModule,
-    MatIconModule,
-    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
