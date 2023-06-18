@@ -5,20 +5,35 @@ import { environment } from '../../environments/environment.development';
 import { z } from 'zod';
 import { map } from 'rxjs';
 
-export const BlogSchema = z.object({
-  id: z.number(),
-  title: z.string(),
-  contentPreview: z.string(),
+export const BlogsPreviewSchema = z.object({
   author: z.string(),
-  likes: z.number(),
   comments: z.number(),
-  likedByMe: z.boolean(),
+  contentPreview: z.string(),
   createdByMe: z.boolean(),
+  id: z.number(),
+  likedByMe: z.boolean(),
+  likes: z.number(),
+  title: z.string(),
 });
 
-const BlogArraySchema = z.array(BlogSchema);
+export const commentSchema = z.object({
+  author: z.string(),
+  content: z.string(),
+  date: z.string(),
+});
 
-export type Blog = z.infer<typeof BlogArraySchema>;
+export const BlogSchema = z.object({
+  author: z.string(),
+  comments: z.array(commentSchema),
+  content: z.string(),
+  likedByMe: z.boolean(),
+  likes: z.number(),
+  title: z.string(),
+});
+
+const BlogOverviewArraySchema = z.array(BlogsPreviewSchema);
+
+export type BlogOverview = z.infer<typeof BlogOverviewArraySchema>;
 
 @Injectable({
   providedIn: 'root',
@@ -28,13 +43,13 @@ export class BlogDataService {
 
   getBlogPosts() {
     return this.httpClient
-      .get<Blog[]>(`${environment.serviceUrl}/entries`)
-      .pipe(map((blogs) => BlogArraySchema.parse(blogs)));
+      .get<BlogOverview[]>(`${environment.serviceUrl}/entries`)
+      .pipe(map((blogs) => BlogOverviewArraySchema.parse(blogs)));
   }
 
   getBlogById(id: number) {
     return this.httpClient
-      .get<Blog>(`${environment.serviceUrl}/entries/${id}`)
+      .get<BlogOverview>(`${environment.serviceUrl}/entries/${id}`)
       .pipe(map((blog) => BlogSchema.parse(blog)));
   }
 }
