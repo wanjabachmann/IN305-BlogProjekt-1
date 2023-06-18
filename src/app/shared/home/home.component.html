@@ -9,7 +9,7 @@
       fxFlex.md="33%"
       *ngFor="let blog of blogs"
     >
-      <mat-card class="blog-card">
+      <mat-card class="blog-card" [routerLink]="['/blog-details', blog.id]">
         <mat-card-header>
           <mat-card-title class="card-title">{{ blog.title }}</mat-card-title>
         </mat-card-header>
@@ -21,13 +21,13 @@
           alt="Random Photo"
         /> -->
         <mat-card-content>
+          <br />
           <p>{{ blog.contentPreview }}</p>
         </mat-card-content>
         <mat-card-footer class="blog-footer">
           <mat-card-content class="blog-author">
             <p>Author: {{ blog.author }}</p>
           </mat-card-content>
-          <a [routerLink]="['/blog-details', blog.id]">View Details</a>
           <mat-card-actions align="end">
             <button
               mat-icon-button
