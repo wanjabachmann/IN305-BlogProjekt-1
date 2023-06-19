@@ -1,0 +1,35 @@
+mat-card {
+  margin: 10px;
+  background-color: gainsboro;
+}
+
+mat-card-title,
+mat-card-subtitle,
+mat-card > span,
+h4,
+p {
+  color: black;
+}
+
+.comment-container {
+  display: flex;
+  align-items: top;
+  margin-bottom: 10px;
+}
+
+.comment-icon {
+  margin-right: 10px;
+}
+
+.comment-icon mat-icon {
+  vertical-align: middle;
+}
+
+.comment-content > p {
+  margin-left: 10px;
+}
+
+.centered-actions {
+  display: flex;
+  justify-content: center;
+}
