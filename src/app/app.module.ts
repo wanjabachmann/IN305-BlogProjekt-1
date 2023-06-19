@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { HeaderComponent } from './core/header/header.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -15,6 +18,9 @@ import { HeaderComponent } from './core/header/header.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
