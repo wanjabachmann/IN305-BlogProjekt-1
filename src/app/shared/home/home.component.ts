@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-
 // Recommended to define it directly in the componenet for reuse
 export type Blog = {
   author: string;
@@ -18,6 +17,5 @@ export type Blog = {
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  // ! --> form Input - require if Input is correc
   @Input({ required: true }) blogs!: Blog[];
 }
