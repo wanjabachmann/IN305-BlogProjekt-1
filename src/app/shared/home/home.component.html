@@ -1,7 +1,5 @@
-<p>home component works</p>
-
 <div class="blog-container">
-  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+  <div fxLayout="row wrap" fxLayoutGap="grid">
     <div
       fxFlex="25%"
       fxFlex.xs="100%"
@@ -9,43 +7,45 @@
       fxFlex.md="33%"
       *ngFor="let blog of blogs"
     >
-      <mat-card class="blog-card" [routerLink]="['/blog-details', blog.id]">
-        <mat-card-header>
-          <mat-card-title class="card-title">{{ blog.title }}</mat-card-title>
-        </mat-card-header>
-        <!-- <img
+      <a [routerLink]="['/blog-details', blog.id]">
+        <mat-card class="blog-card" [routerLink]="['/blog-details', blog.id]">
+          <mat-card-header>
+            <mat-card-title class="card-title">{{ blog.title }}</mat-card-title>
+          </mat-card-header>
+          <!-- <img
           height="150"
           class="blog-image"
           mat-card-image
           src="{{ 'https://picsum.photos/seed/' + blog.id + '/348/300' }}"
           alt="Random Photo"
         /> -->
-        <mat-card-content>
-          <br />
-          <p>{{ blog.contentPreview }}</p>
-        </mat-card-content>
-        <mat-card-footer class="blog-footer">
-          <mat-card-content class="blog-author">
-            <p>Author: {{ blog.author }}</p>
+          <mat-card-content>
+            <br />
+            <p>{{ blog.contentPreview }}</p>
           </mat-card-content>
-          <mat-card-actions align="end">
-            <button
-              mat-icon-button
-              color="warn"
-              aria-label="Example icon button with a heart icon"
-            >
-              <mat-icon>favorite</mat-icon>
-            </button>
-            <button
-              mat-icon-button
-              color="warn"
-              aria-label="Example icon button with a heart icon"
-            >
-              <mat-icon>share</mat-icon>
-            </button>
-          </mat-card-actions>
-        </mat-card-footer>
-      </mat-card>
+          <mat-card-footer class="blog-footer">
+            <mat-card-content class="blog-author">
+              <p>Author: {{ blog.author }}</p>
+            </mat-card-content>
+            <mat-card-actions align="end">
+              <button
+                mat-icon-button
+                color="warn"
+                aria-label="Example icon button with a heart icon"
+              >
+                <mat-icon>favorite</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                aria-label="Example icon button with a heart icon"
+              >
+                <mat-icon>share</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card-footer>
+        </mat-card>
+      </a>
     </div>
   </div>
 </div>
