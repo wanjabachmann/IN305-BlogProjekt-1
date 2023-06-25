@@ -4,6 +4,14 @@
     <br />
     <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
   </div>
+  <div class="loading-container" *ngIf="blogs.error">
+    <mat-icon>error</mat-icon>
+    <br />
+    <p>Failed loading blogs from the API</p>
+    <br />
+    <p>Service URL:</p>
+    <p>{{ serviceUrl }}</p>
+  </div>
   <app-home [blogs]="blogs"></app-home>
 </ng-container>
 

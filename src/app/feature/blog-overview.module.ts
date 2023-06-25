@@ -4,6 +4,7 @@ import { BlogOverviewComponent } from './blog-overview/blog-overview.component';
 import { RouterModule } from '@angular/router';
 import { HomeModule } from '../shared/home/home.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
 
 const routes = [
   {
@@ -18,6 +19,7 @@ const routes = [
     CommonModule,
     HomeModule,
     MatProgressSpinnerModule,
+    MatIconModule,
     RouterModule.forChild(routes),
   ],
 })

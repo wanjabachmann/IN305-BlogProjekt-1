@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BlogDataService, BlogResponse } from 'src/app/core/blog-data.service';
 import { StateService, Person } from 'src/app/core/state.service';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-blog-overview',
@@ -11,6 +12,7 @@ import { StateService, Person } from 'src/app/core/state.service';
 export class BlogOverviewComponent {
   blogs$: Observable<BlogResponse>;
   currentState!: Person;
+  serviceUrl: string = environment.serviceUrl;
 
   constructor(
     private blogService: BlogDataService,

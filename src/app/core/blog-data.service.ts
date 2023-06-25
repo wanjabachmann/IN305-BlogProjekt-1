@@ -41,6 +41,10 @@ export type BlogResponse = {
   error: Error | null;
 };
 
+export class YourComponent {
+  serviceUrl: string = environment.serviceUrl;
+}
+
 @Injectable({
   providedIn: 'root',
 })
