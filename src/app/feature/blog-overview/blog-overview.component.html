@@ -2,3 +2,8 @@
   <div *ngIf="blogs.isLoading">Loading...</div>
   <app-home [blogs]="blogs"></app-home>
 </ng-container>
+
+<div>
+  <h2>Current State:</h2>
+  <pre>{{ currentState | json }}</pre>
+</div>
