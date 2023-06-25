@@ -1,3 +1,4 @@
 <ng-container *ngIf="blogs$ | async; let blogs">
+  <div *ngIf="blogs.isLoading">Loading...</div>
   <app-home [blogs]="blogs"></app-home>
 </ng-container>

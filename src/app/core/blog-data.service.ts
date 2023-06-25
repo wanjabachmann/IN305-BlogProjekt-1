@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
 
 import { z } from 'zod';
-import { map } from 'rxjs';
+import { Observable, catchError, map, of, startWith } from 'rxjs';
 
 export const BlogsPreviewSchema = z.object({
   author: z.string(),
@@ -33,7 +33,13 @@ export const BlogSchema = z.object({
 
 const BlogOverviewArraySchema = z.array(BlogsPreviewSchema);
 
-export type BlogOverview = z.infer<typeof BlogOverviewArraySchema>;
+export type BlogOverview = z.infer<typeof BlogsPreviewSchema>;
+
+export type BlogResponse = {
+  isLoading: boolean;
+  data: BlogOverview[] | null;
+  error: Error | null;
+};
 
 @Injectable({
   providedIn: 'root',
@@ -41,10 +47,15 @@ export type BlogOverview = z.infer<typeof BlogOverviewArraySchema>;
 export class BlogDataService {
   constructor(private httpClient: HttpClient) {}
 
-  getBlogPosts() {
+  getBlogPosts(): Observable<BlogResponse> {
     return this.httpClient
       .get<BlogOverview[]>(`${environment.serviceUrl}/entries`)
-      .pipe(map((blogs) => BlogOverviewArraySchema.parse(blogs)));
+      .pipe(
+        map((blogs) => BlogOverviewArraySchema.parse(blogs)),
+        map((blogs) => ({ isLoading: false, data: blogs, error: null })),
+        startWith({ isLoading: true, data: null, error: null }),
+        catchError((error) => of({ isLoading: false, data: null, error }))
+      );
   }
 
   getBlogById(id: number) {

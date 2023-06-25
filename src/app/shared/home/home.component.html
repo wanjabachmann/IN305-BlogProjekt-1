@@ -5,7 +5,7 @@
       fxFlex.xs="100%"
       fxFlex.sm="50%"
       fxFlex.md="33%"
-      *ngFor="let blog of blogs"
+      *ngFor="let blog of blogs.data"
     >
       <a [routerLink]="['/blog-details', blog.id]">
         <mat-card class="blog-card" [routerLink]="['/blog-details', blog.id]">
