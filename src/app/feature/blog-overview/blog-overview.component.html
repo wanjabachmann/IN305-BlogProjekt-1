@@ -1,5 +1,9 @@
 <ng-container *ngIf="blogs$ | async; let blogs">
-  <div *ngIf="blogs.isLoading">Loading...</div>
+  <div class="loading-container" *ngIf="blogs.isLoading">
+    <p>Loading...</p>
+    <br />
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
   <app-home [blogs]="blogs"></app-home>
 </ng-container>
 

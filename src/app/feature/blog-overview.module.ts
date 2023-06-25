@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BlogOverviewComponent } from './blog-overview/blog-overview.component';
 import { RouterModule } from '@angular/router';
 import { HomeModule } from '../shared/home/home.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
 
 @NgModule({
   declarations: [BlogOverviewComponent],
-  imports: [CommonModule, HomeModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    HomeModule,
+    MatProgressSpinnerModule,
+    RouterModule.forChild(routes),
+  ],
 })
 export class BlogOverviewModule {}
