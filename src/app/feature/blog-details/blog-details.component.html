@@ -54,3 +54,10 @@
     </mat-card>
   </div>
 </div>
+
+<div>
+  <h2>Current State:</h2>
+  <pre>{{ currentState | json }}</pre>
+  <input type="text" [(ngModel)]="name" placeholder="Enter a name" />
+  <button (click)="updateName(name)">Update Name</button>
+</div>
