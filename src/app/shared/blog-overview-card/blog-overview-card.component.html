@@ -1,7 +1,8 @@
 <a [routerLink]="['/blog-details', blog.id]">
-  <mat-card class="blog-card">
+  <mat-card>
     <mat-card-header>
-      <mat-card-title class="card-title">{{ blog.title }}</mat-card-title>
+      <mat-card-title>{{ blog.title }}</mat-card-title>
+      <mat-card-subtitle>Author: {{ blog.author }}</mat-card-subtitle>
     </mat-card-header>
     <!-- <img
           height="150"
@@ -14,25 +15,26 @@
       <br />
       <p>{{ blog.contentPreview }}</p>
     </mat-card-content>
-    <mat-card-footer class="blog-footer">
-      <mat-card-content class="blog-author">
-        <p>Author: {{ blog.author }}</p>
-      </mat-card-content>
-      <mat-card-actions align="end">
-        <button
-          mat-icon-button
-          color="warn"
-          aria-label="Example icon button with a heart icon"
-        >
-          <mat-icon>favorite</mat-icon>
-        </button>
-        <button
-          mat-icon-button
-          color="warn"
-          aria-label="Example icon button with a heart icon"
-        >
-          <mat-icon>share</mat-icon>
-        </button>
+    <mat-card-footer>
+      <mat-card-content> </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions>
+        <div class="button-group">
+          <button
+            mat-icon-button
+            aria-label="Example icon button with a heart icon"
+            class="favorite-button"
+          >
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            aria-label="Example icon button with a heart icon"
+            class="share-button"
+          >
+            <mat-icon>share</mat-icon>
+          </button>
+        </div>
       </mat-card-actions>
     </mat-card-footer>
   </mat-card>
