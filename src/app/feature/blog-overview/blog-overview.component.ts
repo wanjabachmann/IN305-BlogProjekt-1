@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment.development';
   styleUrls: ['./blog-overview.component.scss'],
 })
 export class BlogOverviewComponent {
-  blogs$: Observable<BlogResponse>;
+  blogs$: Observable<BlogResponse> | undefined;
   currentState!: Person;
   serviceUrl: string = environment.serviceUrl;
 

@@ -1,21 +1,16 @@
-<ng-container *ngIf="blogs$ | async; let blogs">
-  <div class="loading-container" *ngIf="blogs.isLoading">
-    <p>Loading...</p>
-    <br />
-    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+<ng-container *ngIf="blogs$ | async as blogs">
+  <div class="blog-container">
+    <div fxLayout="row wrap" fxLayoutGap="grid">
+      <app-blog-overview-card
+        *ngFor="let blog of blogs.data; let i = index"
+        [blog]="blog"
+        [index]="i"
+        [routerLink]="['/detail/', blog.id]"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="33%"
+      ></app-blog-overview-card>
+    </div>
   </div>
-  <div class="loading-container" *ngIf="blogs.error">
-    <mat-icon>error</mat-icon>
-    <br />
-    <p>Failed loading blogs from the API</p>
-    <br />
-    <p>Service URL:</p>
-    <p>{{ serviceUrl }}</p>
-  </div>
-  <app-blog-overview-card [blogs]="blogs"></app-blog-overview-card>
 </ng-container>
-
-<div>
-  <h2>Current State:</h2>
-  <pre>{{ currentState | json }}</pre>
-</div>

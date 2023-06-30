@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { BlogResponse } from 'src/app/core/blog-data.service';
 // Recommended to define it directly in the componenet for reuse
 export type Blog = {
   author: string;
@@ -19,5 +18,7 @@ export type Blog = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlogOverviewCardComponent {
-  @Input({ required: true }) blogs!: BlogResponse;
+  /* blog$: Observable<Blog> | undefined; */
+  @Input({ required: true }) blog!: Blog;
+  @Input({ required: true }) index!: number;
 }

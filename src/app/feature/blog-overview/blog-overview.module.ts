@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BlogOverviewComponent } from './blog-overview/blog-overview.component';
 import { RouterModule } from '@angular/router';
-import { HomeModule } from '../shared/blog-overview-card/blog-overview-card.module';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatIconModule } from '@angular/material/icon';
-
+import { BlogOverviewComponent } from './blog-overview.component';
+import { BlogOverviewCardModule } from '../../shared/blog-overview-card/blog-overview-card.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 const routes = [
   {
     path: '',
@@ -17,10 +15,9 @@ const routes = [
   declarations: [BlogOverviewComponent],
   imports: [
     CommonModule,
-    HomeModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
     RouterModule.forChild(routes),
+    BlogOverviewCardModule,
+    FlexLayoutModule,
   ],
 })
 export class BlogOverviewModule {}
