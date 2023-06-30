@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BlogResponse } from 'src/app/core/blog-data.service';
 // Recommended to define it directly in the componenet for reuse
 export type Blog = {
@@ -13,10 +13,11 @@ export type Blog = {
 };
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-blog-overview-card',
+  templateUrl: './blog-overview-card.component.html',
+  styleUrls: ['./blog-overview-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {
+export class BlogOverviewCardComponent {
   @Input({ required: true }) blogs!: BlogResponse;
 }
