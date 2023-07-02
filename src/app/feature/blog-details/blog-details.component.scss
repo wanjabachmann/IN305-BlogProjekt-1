@@ -61,3 +61,10 @@ mat-card-subtitle {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  text-align: center;
+}

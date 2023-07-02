@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { BlogOverviewComponent } from './blog-overview.component';
 import { BlogOverviewCardModule } from '../../shared/blog-overview-card/blog-overview-card.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 const routes = [
   {
     path: '',
@@ -18,6 +20,7 @@ const routes = [
     RouterModule.forChild(routes),
     BlogOverviewCardModule,
     FlexLayoutModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class BlogOverviewModule {}

@@ -32,12 +32,20 @@ export const BlogSchema = z.object({
 });
 
 const BlogOverviewArraySchema = z.array(BlogsPreviewSchema);
+const BlogDetailSchema = BlogSchema;
 
 export type BlogOverview = z.infer<typeof BlogsPreviewSchema>;
+export type BlogDetail = z.infer<typeof BlogSchema>;
 
-export type BlogResponse = {
+export type BlogOverviewResponse = {
   isLoading: boolean;
   data: BlogOverview[] | null;
+  error: Error | null;
+};
+
+export type BlogDetailResponse = {
+  isLoading: boolean;
+  data: BlogDetail | null;
   error: Error | null;
 };
 
@@ -51,7 +59,7 @@ export class YourComponent {
 export class BlogDataService {
   constructor(private httpClient: HttpClient) {}
 
-  getBlogPosts(): Observable<BlogResponse> {
+  getBlogPosts(): Observable<BlogOverviewResponse> {
     return this.httpClient
       .get<BlogOverview[]>(`${environment.serviceUrl}/entries`)
       .pipe(
@@ -65,6 +73,11 @@ export class BlogDataService {
   getBlogById(id: number) {
     return this.httpClient
       .get<BlogOverview>(`${environment.serviceUrl}/entries/${id}`)
-      .pipe(map((blog) => BlogSchema.parse(blog)));
+      .pipe(
+        map((blog) => BlogDetailSchema.parse(blog)),
+        map((blog) => ({ isLoading: false, data: blog, error: null })),
+        startWith({ isLoading: true, data: null, error: null }),
+        catchError((error) => of({ isLoading: false, data: null, error }))
+      );
   }
 }

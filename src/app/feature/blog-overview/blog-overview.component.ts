@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BlogDataService, BlogResponse } from 'src/app/core/blog-data.service';
+import {
+  BlogDataService,
+  BlogOverviewResponse,
+} from 'src/app/core/blog-data.service';
 import { StateService, Person } from 'src/app/core/state.service';
 import { environment } from 'src/environments/environment.development';
 import { Router } from '@angular/router';
@@ -11,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./blog-overview.component.scss'],
 })
 export class BlogOverviewComponent {
-  blogs$: Observable<BlogResponse> | undefined;
+  blogs$: Observable<BlogOverviewResponse> | undefined;
   currentState!: Person;
   serviceUrl: string = environment.serviceUrl;
 
