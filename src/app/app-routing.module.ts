@@ -10,14 +10,16 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./feature/blog-overview.module').then(
+      import('./feature/blog-overview/blog-overview.module').then(
         (m) => m.BlogOverviewModule
       ),
   },
   {
     path: 'blog-details/:id',
     loadChildren: () =>
-      import('./feature/blog-details.module').then((m) => m.BlogDetailsModule),
+      import('./feature/blog-details/blog-details.module').then(
+        (m) => m.BlogDetailsModule
+      ),
   },
 ];
 

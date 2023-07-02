@@ -1,8 +1,5 @@
 mat-card {
   margin-top: 20px;
-  margin-left: 30px;
-  margin-right: 30px;
-  max-width: 1024px;
   background-color: gainsboro;
 }
 
@@ -47,22 +44,27 @@ mat-card-title {
   align-items: flex-start;
 }
 
-.comments-container {
+.comments-container,
+.blog-container {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.comments-card {
   width: 100%;
   max-width: 1024px;
 }
 
-.comments-container {
+.mdc-card {
   width: 100%;
 }
 
 mat-card-subtitle {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  text-align: center;
 }

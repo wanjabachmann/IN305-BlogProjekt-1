@@ -1,23 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
+import { BlogOverviewCardComponent } from './blog-overview-card.component';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [BlogOverviewCardComponent],
   imports: [
     CommonModule,
     MatCardModule,
     MatIconModule,
-    FlexLayoutModule,
+    MatDividerModule,
     RouterModule,
   ],
-  exports: [HomeComponent],
+  exports: [BlogOverviewCardComponent],
   providers: [],
 })
-export class HomeModule {}
+export class BlogOverviewCardModule {}

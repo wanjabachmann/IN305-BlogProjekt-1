@@ -1,6 +1,9 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span [routerLink]="['/']">My App</span>
+    <a [routerLink]="['/']">
+      <mat-icon class="home-icon">home</mat-icon>
+      <span>My App</span>
+    </a>
     <span class="example-spacer"></span>
     <button
       mat-icon-button

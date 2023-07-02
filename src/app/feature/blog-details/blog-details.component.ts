@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { BlogDataService } from 'src/app/core/blog-data.service';
+import {
+  BlogDataService,
+  BlogDetailResponse,
+} from 'src/app/core/blog-data.service';
+import { StateService, Person } from 'src/app/core/state.service';
 
 export type BlogDetails = {
   author: string;
@@ -24,12 +28,27 @@ export type Comment = {
   styleUrls: ['./blog-details.component.scss'],
 })
 export class BlogDetailsComponent {
-  blog$: Observable<BlogDetails> | undefined;
+  blog$: Observable<BlogDetailResponse> | undefined;
+  currentState!: Person;
+  name = '';
+
+  @Input({ required: true }) blog!: BlogDetails;
 
   constructor(
     private route: ActivatedRoute,
-    private blogService: BlogDataService
-  ) {}
+    private blogService: BlogDataService,
+    private stateService: StateService
+  ) {
+    // Update the current state if the observable emits a new value
+    this.stateService.state$.subscribe((state) => {
+      this.currentState = state;
+    });
+  }
+
+  updateName(name: string) {
+    // calls the set method on the service
+    this.stateService.setName(name);
+  }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {

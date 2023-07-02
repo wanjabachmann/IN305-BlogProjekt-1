@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
 
 import { z } from 'zod';
-import { map } from 'rxjs';
+import { Observable, catchError, map, of, startWith } from 'rxjs';
 
 export const BlogsPreviewSchema = z.object({
   author: z.string(),
@@ -32,8 +32,26 @@ export const BlogSchema = z.object({
 });
 
 const BlogOverviewArraySchema = z.array(BlogsPreviewSchema);
+const BlogDetailSchema = BlogSchema;
 
-export type BlogOverview = z.infer<typeof BlogOverviewArraySchema>;
+export type BlogOverview = z.infer<typeof BlogsPreviewSchema>;
+export type BlogDetail = z.infer<typeof BlogSchema>;
+
+export type BlogOverviewResponse = {
+  isLoading: boolean;
+  data: BlogOverview[] | null;
+  error: Error | null;
+};
+
+export type BlogDetailResponse = {
+  isLoading: boolean;
+  data: BlogDetail | null;
+  error: Error | null;
+};
+
+export class YourComponent {
+  serviceUrl: string = environment.serviceUrl;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -41,15 +59,25 @@ export type BlogOverview = z.infer<typeof BlogOverviewArraySchema>;
 export class BlogDataService {
   constructor(private httpClient: HttpClient) {}
 
-  getBlogPosts() {
+  getBlogPosts(): Observable<BlogOverviewResponse> {
     return this.httpClient
       .get<BlogOverview[]>(`${environment.serviceUrl}/entries`)
-      .pipe(map((blogs) => BlogOverviewArraySchema.parse(blogs)));
+      .pipe(
+        map((blogs) => BlogOverviewArraySchema.parse(blogs)),
+        map((blogs) => ({ isLoading: false, data: blogs, error: null })),
+        startWith({ isLoading: true, data: null, error: null }),
+        catchError((error) => of({ isLoading: false, data: null, error }))
+      );
   }
 
   getBlogById(id: number) {
     return this.httpClient
       .get<BlogOverview>(`${environment.serviceUrl}/entries/${id}`)
-      .pipe(map((blog) => BlogSchema.parse(blog)));
+      .pipe(
+        map((blog) => BlogDetailSchema.parse(blog)),
+        map((blog) => ({ isLoading: false, data: blog, error: null })),
+        startWith({ isLoading: true, data: null, error: null }),
+        catchError((error) => of({ isLoading: false, data: null, error }))
+      );
   }
 }

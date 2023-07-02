@@ -1,3 +1,27 @@
-<ng-container *ngIf="blogs$ | async; let blogs">
-  <app-home [blogs]="blogs"></app-home>
+<ng-container *ngIf="blogs$ | async as blogs">
+  <div class="loading-container" *ngIf="blogs.isLoading">
+    <p>Loading Blogs...</p>
+    <br />
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+
+  <div *ngIf="blogs.error">
+    <p>Error loading the blogs:</p>
+    <p>{{ blogs.error.message }}</p>
+  </div>
+
+  <div class="blog-container" *ngIf="blogs.data">
+    <div fxLayout="row wrap" fxLayoutGap="grid">
+      <app-blog-overview-card
+        *ngFor="let blog of blogs.data; let i = index"
+        (selectBlog)="selectBlog(blog.id)"
+        [blog]="blog"
+        [index]="i"
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlex.md="33%"
+      ></app-blog-overview-card>
+    </div>
+  </div>
 </ng-container>
