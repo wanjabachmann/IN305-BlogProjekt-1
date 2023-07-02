@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 // Recommended to define it directly in the componenet for reuse
 export type Blog = {
   author: string;
@@ -21,4 +27,10 @@ export class BlogOverviewCardComponent {
   /* blog$: Observable<Blog> | undefined; */
   @Input({ required: true }) blog!: Blog;
   @Input({ required: true }) index!: number;
+
+  @Output() selectBlog = new EventEmitter();
+
+  onSelectBlog() {
+    this.selectBlog.emit();
+  }
 }

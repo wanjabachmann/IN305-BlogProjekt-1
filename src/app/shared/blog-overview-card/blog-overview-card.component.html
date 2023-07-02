@@ -1,5 +1,5 @@
-<a [routerLink]="['/blog-details', blog.id]">
-  <mat-card>
+<a>
+  <mat-card (click)="onSelectBlog()">
     <mat-card-header>
       <mat-card-title>{{ blog.title }}</mat-card-title>
       <mat-card-subtitle>Author: {{ blog.author }}</mat-card-subtitle>

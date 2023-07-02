@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { BlogDataService, BlogResponse } from 'src/app/core/blog-data.service';
 import { StateService, Person } from 'src/app/core/state.service';
 import { environment } from 'src/environments/environment.development';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog-overview',
@@ -16,7 +17,8 @@ export class BlogOverviewComponent {
 
   constructor(
     private blogService: BlogDataService,
-    private stateService: StateService
+    private stateService: StateService,
+    private pageRouter: Router
   ) {
     // saves the observable
     this.blogs$ = this.blogService.getBlogPosts();
@@ -25,5 +27,9 @@ export class BlogOverviewComponent {
     this.stateService.state$.subscribe((state) => {
       this.currentState = state;
     });
+  }
+
+  selectBlog(id: number) {
+    this.pageRouter.navigate(['blog-details', id]);
   }
 }

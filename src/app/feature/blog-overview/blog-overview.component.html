@@ -3,9 +3,9 @@
     <div fxLayout="row wrap" fxLayoutGap="grid">
       <app-blog-overview-card
         *ngFor="let blog of blogs.data; let i = index"
+        (selectBlog)="selectBlog(blog.id)"
         [blog]="blog"
         [index]="i"
-        [routerLink]="['/detail/', blog.id]"
         fxFlex="25%"
         fxFlex.xs="100%"
         fxFlex.sm="50%"
