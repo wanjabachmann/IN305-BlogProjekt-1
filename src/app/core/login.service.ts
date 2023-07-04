@@ -1,16 +1,33 @@
 import { Injectable } from '@angular/core';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 
+export type UserState = {
+  isAuthenticated: boolean;
+  userData: AuthUserData | null;
+};
+
+export type AuthUserData = {
+  email: string;
+  email_verified: boolean;
+  family_name: string;
+  given_name: string;
+  preferred_username: string;
+  sub: string;
+};
+
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(private oidcSecurityService: OidcSecurityService) {
-    this.oidcSecurityService
-      .checkAuth()
-      .subscribe(({ isAuthenticated, userData }) => {
-        console.log('Authentication', isAuthenticated, userData);
-      });
+  username = '';
+
+  private userState: UserState = {
+    isAuthenticated: false,
+    userData: null,
+  };
+
+  constructor(public oidcSecurityService: OidcSecurityService) {
+    this.updateAuth();
   }
 
   login() {
@@ -20,6 +37,28 @@ export class LoginService {
   logout() {
     this.oidcSecurityService
       .logoff()
-      .subscribe((result) => console.log(result));
+      .subscribe((result) => console.log('logout ' + result));
+  }
+
+  updateAuth() {
+    this.oidcSecurityService
+      .checkAuth()
+      .subscribe(({ isAuthenticated, userData }) => {
+        this.userState.isAuthenticated = isAuthenticated;
+        this.userState.userData = userData;
+        this.username = this.getUserData()?.preferred_username || '';
+      });
+  }
+
+  getIsAuthenticated(): boolean {
+    return this.userState.isAuthenticated;
+  }
+
+  getUserData(): AuthUserData | null {
+    return this.userState.userData;
+  }
+
+  getUsername(): string {
+    return this.username;
   }
 }

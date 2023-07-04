@@ -5,13 +5,22 @@
       <span>My App</span>
     </a>
     <span class="example-spacer"></span>
+    <mat-icon *ngIf="loginService.getIsAuthenticated()">person</mat-icon>
+    <span>{{ preferredUsername }}</span>
+    <!-- <span>{{ loginService.getIsAuthenticated() }}</span> -->
     <button
-      mat-icon-button
-      class="login"
-      aria-label="Example icon-button with person icon"
-      (click)="checkAuth$.emit()"
+      mat-button
+      (click)="login()"
+      *ngIf="!loginService.getIsAuthenticated()"
     >
-      <mat-icon>person</mat-icon>
+      <mat-icon>login</mat-icon>
+    </button>
+    <button
+      mat-button
+      (click)="logout()"
+      *ngIf="loginService.getIsAuthenticated()"
+    >
+      <mat-icon>logout</mat-icon>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
