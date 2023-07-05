@@ -13,7 +13,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginService.updateAuth();
-    this.preferredUsername = this.loginService.getUsername();
+    this.loginService.getUsernameObservable().subscribe((username) => {
+      this.preferredUsername = username;
+    });
   }
 
   login() {

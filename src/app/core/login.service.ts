@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { Subject } from 'rxjs';
 
 export type UserState = {
   isAuthenticated: boolean;
@@ -20,6 +21,7 @@ export type AuthUserData = {
 })
 export class LoginService {
   username = '';
+  private usernameSubject = new Subject<string>();
 
   private userState: UserState = {
     isAuthenticated: false,
@@ -47,6 +49,7 @@ export class LoginService {
         this.userState.isAuthenticated = isAuthenticated;
         this.userState.userData = userData;
         this.username = this.getUserData()?.preferred_username || '';
+        this.usernameSubject.next(this.username);
       });
   }
 
@@ -60,5 +63,9 @@ export class LoginService {
 
   getUsername(): string {
     return this.username;
+  }
+
+  getUsernameObservable() {
+    return this.usernameSubject.asObservable();
   }
 }

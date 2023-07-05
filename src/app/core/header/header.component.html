@@ -6,7 +6,7 @@
     </a>
     <span class="example-spacer"></span>
     <mat-icon *ngIf="loginService.getIsAuthenticated()">person</mat-icon>
-    <span>{{ preferredUsername }}</span>
+    <span>{{ loginService.getUsername() }}</span>
     <!-- <span>{{ loginService.getIsAuthenticated() }}</span> -->
     <button
       mat-button
