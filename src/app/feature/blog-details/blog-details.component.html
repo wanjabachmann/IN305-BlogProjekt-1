@@ -23,6 +23,8 @@
 
         <mat-card-content>
           <p>{{ blog.data.content }}</p>
+          <br />
+          <mat-divider></mat-divider>
         </mat-card-content>
 
         <mat-card-actions class="centered-actions">
@@ -30,7 +32,10 @@
             <mat-icon>thumb_up</mat-icon>
             <span>{{ blog.data.likes }}</span>
           </button>
-          <button mat-icon-button color="warn" *ngIf="!blog.data?.likedByMe">
+          <button mat-icon-button color="accent" *ngIf="!blog.data?.likedByMe">
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" *ngIf="blog.data?.likedByMe">
             <mat-icon>favorite</mat-icon>
           </button>
           <br />
