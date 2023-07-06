@@ -19,22 +19,32 @@
       <mat-card-content> </mat-card-content>
       <mat-divider></mat-divider>
       <mat-card-actions>
-        <div class="button-group">
-          <button
-            mat-icon-button
-            aria-label="Example icon button with a heart icon"
-            class="favorite-button"
-          >
-            <mat-icon>favorite</mat-icon>
-          </button>
-          <button
-            mat-icon-button
-            aria-label="Example icon button with a heart icon"
-            class="share-button"
-          >
-            <mat-icon>share</mat-icon>
-          </button>
-        </div>
+        <button
+          *ngIf="!blog.likedByMe"
+          mat-mini-fab
+          matTooltip="Accent"
+          color="accent"
+          aria-label="Example icon-button with a heart icon"
+        >
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button
+          *ngIf="blog.likedByMe"
+          mat-mini-fab
+          matTooltip="Primary"
+          color="primary"
+          aria-label="Example icon-button with a heart icon"
+        >
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button
+          mat-mini-fab
+          matTooltip="Link"
+          color="accent"
+          aria-label="Example mini fab with a heart icon"
+        >
+          <mat-icon>share</mat-icon>
+        </button>
       </mat-card-actions>
     </mat-card-footer>
   </mat-card>

@@ -10,6 +10,7 @@ import { HeaderComponent } from './core/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthConfigModule } from './core/auth/auth-config.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -21,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    AuthConfigModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
