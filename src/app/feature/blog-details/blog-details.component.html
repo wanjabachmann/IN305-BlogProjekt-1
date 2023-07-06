@@ -28,20 +28,18 @@
         </mat-card-content>
 
         <mat-card-actions class="centered-actions">
-          <button mat-icon-button color="primary">
+          <button mat-fab extended color="accent" *ngIf="!blog.data?.likedByMe">
+            <mat-icon>favorite</mat-icon>
+            Like
+          </button>
+          <button mat-fab extended color="warn" *ngIf="blog.data?.likedByMe">
+            <mat-icon>favorite</mat-icon>
+            Like
+          </button>
+          <button mat-fab extended disabled color="primary">
             <mat-icon>thumb_up</mat-icon>
-            <span>{{ blog.data.likes }}</span>
+            {{ blog.data.likes }}
           </button>
-          <button mat-icon-button color="accent" *ngIf="!blog.data?.likedByMe">
-            <mat-icon>favorite</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" *ngIf="blog.data?.likedByMe">
-            <mat-icon>favorite</mat-icon>
-          </button>
-          <br />
-          <br />
-          <br />
-          <br />
         </mat-card-actions>
       </mat-card>
     </div>
