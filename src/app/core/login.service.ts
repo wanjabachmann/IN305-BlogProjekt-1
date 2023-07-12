@@ -28,11 +28,10 @@ export class LoginService {
     userData: null,
   };
 
-  constructor(public oidcSecurityService: OidcSecurityService) {
-    this.updateAuth();
-  }
+  constructor(public oidcSecurityService: OidcSecurityService) {}
 
   login() {
+    console.log('login');
     this.oidcSecurityService.authorize();
   }
 
