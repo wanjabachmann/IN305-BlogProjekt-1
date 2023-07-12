@@ -11,10 +11,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthConfigModule } from './core/auth/auth-config.module';
-import { AddBlogPageComponent } from './feature/add-blog-page/add-blog-page.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, AddBlogPageComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
