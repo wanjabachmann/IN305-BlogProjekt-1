@@ -21,6 +21,13 @@ const routes: Routes = [
         (m) => m.BlogDetailsModule
       ),
   },
+  {
+    path: 'add-blog-page',
+    loadChildren: () =>
+      import('./feature/add-blog-page/add-blog-page.module').then(
+        (m) => m.AddBlogPageModule
+      ),
+  },
 ];
 
 @NgModule({

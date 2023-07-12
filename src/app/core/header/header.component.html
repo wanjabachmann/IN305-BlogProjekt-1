@@ -4,6 +4,9 @@
       <mat-icon class="home-icon">home</mat-icon>
       <span>My App</span>
     </a>
+    <a [routerLink]="['/add-blog-page']">
+      <span>New Blog</span>
+    </a>
     <span class="example-spacer"></span>
     <mat-icon *ngIf="loginService.getIsAuthenticated()">person</mat-icon>
     <span>{{ loginService.getUsername() }}</span>
