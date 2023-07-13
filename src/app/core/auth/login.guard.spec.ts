@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { LoginGuard } from './login-in.guard';
+import { LoginGuard } from './login.guard';
 import { LoginService } from '../login.service';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { of } from 'rxjs';

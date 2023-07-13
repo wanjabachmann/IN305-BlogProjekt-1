@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginGuard } from './core/auth/login.guard';
+import { ErrorPageComponent } from './core/error-page/error-page.component';
+import { ErrorPageNotFoundPageComponent } from './core/error-page-not-found-page/error-page-not-found-page.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,11 @@ const routes: Routes = [
       ),
     canActivate: [LoginGuard],
   },
+  {
+    path: 'error',
+    component: ErrorPageComponent,
+  },
+  { path: '**', component: ErrorPageNotFoundPageComponent },
 ];
 
 @NgModule({
