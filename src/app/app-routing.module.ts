@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { loginInGuard } from './core/auth/login-in.guard';
+import { LoginGuard } from './core/auth/login.guard';
 
 const routes: Routes = [
   {
@@ -28,7 +28,7 @@ const routes: Routes = [
       import('./feature/add-blog-page/add-blog-page.module').then(
         (m) => m.AddBlogPageModule
       ),
-    canActivate: [loginInGuard],
+    canActivate: [LoginGuard],
   },
 ];
 
